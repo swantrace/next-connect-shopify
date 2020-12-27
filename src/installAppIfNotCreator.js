@@ -1,27 +1,36 @@
-const getShopify = async (ctx) => {
-  const { applySession } = require('next-session');
-  const prepareSessionOptions = require('./prepareSessionOptions');
-  const Shopify = require('shopify-api-node');
+import { applySession } from 'next-session';
+import Shopify from 'shopify-api-node';
+const installAppIfNotCreator = ({
+  prepareSessionOptions,
+  paramsIValue,
+  apiVersion,
+  autoLimit,
+  presentmentPrices,
+  shopifyAPITimeout,
+}) => async (ctx) => {
   const { req, res, resolvedUrl } = ctx;
+  const installUrl = `/api/shopify/${paramsIValue}${resolvedUrl.replace(
+    '/',
+    ''
+  )}`;
   const options = await prepareSessionOptions();
   await applySession(req, res, options);
   const { shopName, accessToken } = req.session;
   if (!shopName || !accessToken) {
     res
       .writeHead(302, {
-        Location: `/api/shopify/install${resolvedUrl.replace('/', '')}`,
+        Location: installUrl,
       })
       .end();
     return false;
   }
-
   const shopify = new Shopify({
     shopName,
-    apiVersion: process.env.SHOPIFY_APP_API_VERSION,
-    autoLimit: JSON.parse(process.env.SHOPIFY_APP_AUTO_LIMIT),
-    presentmentPrices: JSON.parse(process.env.SHOPIFY_APP_PRESENTMENT_PRICES),
-    timeout: parseInt(process.env.SHOPIFY_APP_API_REQUEST_TIMEOUT, 10),
     accessToken,
+    apiVersion,
+    autoLimit,
+    presentmentPrices,
+    timeout: shopifyAPITimeout,
   });
 
   let accessScope;
@@ -34,7 +43,7 @@ const getShopify = async (ctx) => {
   } catch (err) {
     res
       .writeHead(302, {
-        Location: `/api/shopify/install${resolvedUrl.replace('/', '')}`,
+        Location: installUrl,
       })
       .end();
     return false;
@@ -43,12 +52,13 @@ const getShopify = async (ctx) => {
   if (!accessScope) {
     res
       .writeHead(302, {
-        Location: `/api/shopify/install${resolvedUrl.replace('/', '')}`,
+        Location: installUrl,
       })
       .end();
     return false;
   }
+  shopify.accessScopeList = accessScope;
   return shopify;
 };
 
-module.exports = getShopify;
+export default installAppIfNotCreator;

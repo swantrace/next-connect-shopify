@@ -1,4 +1,4 @@
-const removeProperties = (target, keys) => {
+export const removeProperties = (target, keys) => {
   const result = Object.keys(target).reduce((acc, key) => {
     if (!keys.includes(key)) {
       acc[key] = target[key];
@@ -7,5 +7,3 @@ const removeProperties = (target, keys) => {
   }, {});
   return result;
 };
-
-exports.removeProperties = removeProperties;
