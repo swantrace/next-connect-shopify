@@ -1,6 +1,6 @@
 {
   "name": "next-connect-shopify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "help to develop shopify app with next.js framework, using API Routes instead of custom server",
   "author": "Qixuan Hong",
   "license": "MIT",
@@ -25,12 +25,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "next-session": "^3.4.0",
-    "react": "^17.0.1",
+    "react": "^16.9.0",
     "shopify-api-node": "^3.6.0",
     "shopify-token": "^4.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/swantrace/nextjs-shopify-mongodb-auth.git"
+    "url": "https://github.com/swantrace/next-connect-shopify.git"
   }
 }
