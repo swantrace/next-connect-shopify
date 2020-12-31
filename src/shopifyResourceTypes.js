@@ -5,12 +5,12 @@ const shopifyResourceTypes = {
     activate: ['id', '_params'],
     create: ['createApplicationCharge'],
     get: ['id', '_params'],
-    list: ['_params'],
+    list: ['_params']
   },
   applicationCredit: {
     create: ['createApplicationCredit'],
     get: ['id', '_params'],
-    list: ['_params'],
+    list: ['_params']
   },
   article: {
     authors: [],
@@ -20,18 +20,18 @@ const shopifyResourceTypes = {
     get: ['blogId', 'id', '_params'],
     list: ['blogId', '_params'],
     tags: ['blogId', '_params'],
-    update: ['blogId', 'id', 'updateArticle'],
+    update: ['blogId', 'id', 'updateArticle']
   },
   asset: {
     create: ['themeId', 'params'],
     delete: ['themeId', 'params'],
     get: ['themeId', '_params'],
     list: ['themeId', '_params'],
-    update: ['themeId', 'updateAsset'],
+    update: ['themeId', 'updateAsset']
   },
   balance: {
     list: [],
-    transactions: [],
+    transactions: []
   },
   blog: {
     count: [],
@@ -39,19 +39,19 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   cancellationRequest: {
     create: ['fulfillmentOrderId', '_message'],
     accept: ['fulfillmentOrderId', '_message'],
-    reject: ['fulfillmentOrderId', '_message'],
+    reject: ['fulfillmentOrderId', '_message']
   },
   carrierService: {
     create: ['createCarrierService'],
     delete: ['id'],
     get: ['id'],
     list: [],
-    update: ['id', 'updateCarrierService'],
+    update: ['id', 'updateCarrierService']
   },
   checkout: {
     complete: ['token'],
@@ -60,23 +60,23 @@ const shopifyResourceTypes = {
     get: ['token'],
     list: ['_params'],
     shippingRates: ['token'],
-    update: ['token', 'params'],
+    update: ['token', 'params']
   },
   collect: {
     count: ['_params'],
     create: ['createCollect'],
     delete: ['id'],
     get: ['id', '_params'],
-    list: ['_params'],
+    list: ['_params']
   },
   collection: {
     get: ['id', '_params'],
-    products: ['id', '_params'],
+    products: ['id', '_params']
   },
   collectionListing: {
     get: ['id', '_params'],
     list: ['_params'],
-    productIds: ['id', '_params'],
+    productIds: ['id', '_params']
   },
   comment: {
     approve: ['id'],
@@ -88,7 +88,7 @@ const shopifyResourceTypes = {
     remove: ['id'],
     restore: ['id'],
     spam: ['id'],
-    update: ['id', 'updateComment'],
+    update: ['id', 'updateComment']
   },
   country: {
     count: [],
@@ -96,10 +96,10 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'updateCountry'],
+    update: ['id', 'updateCountry']
   },
   currency: {
-    list: [],
+    list: []
   },
   customCollection: {
     count: ['_params'],
@@ -107,7 +107,7 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   customer: {
     accountActivationUrl: ['id'],
@@ -118,7 +118,7 @@ const shopifyResourceTypes = {
     list: ['_params'],
     search: ['params'],
     update: ['id', 'params'],
-    orders: ['id', '_params'],
+    orders: ['id', '_params']
   },
   customerAddress: {
     create: ['customerId', 'params'],
@@ -127,7 +127,7 @@ const shopifyResourceTypes = {
     get: ['customerId', 'id'],
     list: ['customerId', '_params'],
     set: ['customerId', 'params'],
-    update: ['customerId', 'id', 'params'],
+    update: ['customerId', 'id', 'params']
   },
   customerSavedSearch: {
     count: ['_params'],
@@ -136,7 +136,7 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   discountCode: {
     create: ['priceRuleId', 'params'],
@@ -144,16 +144,16 @@ const shopifyResourceTypes = {
     get: ['priceRuleId', 'id'],
     list: ['priceRuleId', '_params'],
     lookup: ['params'],
-    update: ['priceRuleId', 'id', '_params'],
+    update: ['priceRuleId', 'id', '_params']
   },
   discountCodeCreationJob: {
     create: ['priceRuleId', 'params'],
     discountCodes: ['priceRuleId', 'id'],
-    get: ['priceRuleId', 'id'],
+    get: ['priceRuleId', 'id']
   },
   dispute: {
     get: ['id'],
-    list: ['_params'],
+    list: ['_params']
   },
   draftOrder: {
     complete: ['id', '_params'],
@@ -163,12 +163,12 @@ const shopifyResourceTypes = {
     get: ['id'],
     list: ['_params'],
     sendInvoice: ['id', '_params'],
-    update: ['id', '_params'],
+    update: ['id', '_params']
   },
   event: {
     count: ['_params'],
     get: ['id', '_params'],
-    list: ['_params'],
+    list: ['_params']
   },
   fulfillment: {
     cancel: ['orderId', 'id'],
@@ -180,14 +180,14 @@ const shopifyResourceTypes = {
     list: ['orderId', '_params'],
     open: ['orderId', 'id'],
     update: ['orderId', 'id', 'params'],
-    updateTracking: ['id', 'params'],
+    updateTracking: ['id', 'params']
   },
   fulfillmentEvent: {
     create: ['orderId', 'fulfillmentId', 'params'],
     delete: ['orderId', 'fulfillmentId', 'id'],
     get: ['orderId', 'fulfillmentId', 'id'],
     list: ['orderId', 'fulfillmentId', '_params'],
-    update: ['orderId', 'fulfillmentId', 'id', 'params'],
+    update: ['orderId', 'fulfillmentId', 'id', 'params']
   },
   fulfillmentOrder: {
     cancel: ['id', 'fulfillmentOrder'],
@@ -195,19 +195,19 @@ const shopifyResourceTypes = {
     get: ['id'],
     list: ['_params'],
     locationsForMove: ['id'],
-    move: ['id', 'locationId'],
+    move: ['id', 'locationId']
   },
   fulfillmentRequest: {
     accept: ['fulfillmentOrderId', '_message'],
     create: ['fulfillmentOrderId', 'createFulfillmentRequest'],
-    reject: ['fulfillmentOrderId', '_message'],
+    reject: ['fulfillmentOrderId', '_message']
   },
   fulfillmentService: {
     create: ['params'],
     delete: ['id'],
     get: ['id'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   giftCard: {
     count: ['_params'],
@@ -216,31 +216,31 @@ const shopifyResourceTypes = {
     get: ['id'],
     list: ['_params'],
     search: ['params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   giftCardAdjustment: {
     create: ['giftCardId', 'params'],
     get: ['giftCardId', 'id'],
-    list: ['giftCardId'],
+    list: ['giftCardId']
   },
   graphql: ['data', '_variables'],
   inventoryItem: {
     get: ['id'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   inventoryLevel: {
     adjust: ['params'],
     connect: ['params'],
     delete: ['params'],
     list: ['params'],
-    set: ['params'],
+    set: ['params']
   },
   location: {
     count: [],
     get: ['id'],
     inventoryLevels: ['id', '_params'],
-    list: [],
+    list: []
   },
   marketingEvent: {
     count: ['_params'],
@@ -249,7 +249,7 @@ const shopifyResourceTypes = {
     get: ['id', '_params'],
     list: ['_params'],
     update: ['id', 'params'],
-    engagements: ['id', 'params'],
+    engagements: ['id', 'params']
   },
   metafield: {
     count: ['_params'],
@@ -257,7 +257,7 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   order: {
     cancel: ['id', '_params'],
@@ -269,14 +269,14 @@ const shopifyResourceTypes = {
     get: ['id', '_params'],
     list: ['_params'],
     open: ['id'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   orderRisk: {
     create: ['orderId', 'params'],
     delete: ['orderId', 'id'],
     get: ['orderId', 'id'],
     list: ['orderId'],
-    update: ['orderId', 'id', 'params'],
+    update: ['orderId', 'id', 'params']
   },
   page: {
     count: ['_params'],
@@ -284,27 +284,27 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   payment: {
     count: ['checkoutToken'],
     create: ['checkoutToken', 'params'],
     get: ['checkoutToken', 'id'],
-    list: ['_checkoutToken'],
+    list: ['_checkoutToken']
   },
   payout: {
     get: ['id'],
-    list: ['_params'],
+    list: ['_params']
   },
   policy: {
-    list: ['_params'],
+    list: ['_params']
   },
   priceRule: {
     create: ['params'],
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   product: {
     count: ['_params'],
@@ -312,7 +312,7 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   productImage: {
     count: ['productId', '_params'],
@@ -320,7 +320,7 @@ const shopifyResourceTypes = {
     delete: ['productId', 'id'],
     get: ['productId', 'id', '_params'],
     list: ['productId', '_params'],
-    update: ['productId', 'id', 'params'],
+    update: ['productId', 'id', 'params']
   },
   productListing: {
     count: [],
@@ -328,11 +328,11 @@ const shopifyResourceTypes = {
     delete: ['productId'],
     get: ['productId'],
     list: ['_params'],
-    productIds: ['_params'],
+    productIds: ['_params']
   },
   productResourceFeedback: {
     create: ['productId', 'params'],
-    list: ['productId', '_params'],
+    list: ['productId', '_params']
   },
   productVariant: {
     count: ['productId'],
@@ -340,13 +340,13 @@ const shopifyResourceTypes = {
     delete: ['productId', 'id'],
     get: ['id', '_params'],
     list: ['productId', '_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   province: {
     count: ['countryId', '_params'],
     get: ['countryId', 'id', '_params'],
     list: ['countryId', '_params'],
-    update: ['countryId', 'id', 'params'],
+    update: ['countryId', 'id', 'params']
   },
   recurringApplicationCharge: {
     activate: ['id', 'params'],
@@ -354,7 +354,7 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    customize: ['id', 'params'],
+    customize: ['id', 'params']
   },
   redirect: {
     count: ['_params'],
@@ -362,24 +362,24 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'updateRedirect'],
+    update: ['id', 'updateRedirect']
   },
   refund: {
     calculate: ['orderId', 'params'],
     create: ['orderId', 'params'],
     get: ['orderId', 'id', '_params'],
-    list: ['orderId', '_params'],
+    list: ['orderId', '_params']
   },
   report: {
     create: ['params'],
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   resourceFeedback: {
     create: ['params'],
-    list: [],
+    list: []
   },
   scriptTag: {
     count: ['_params'],
@@ -387,13 +387,13 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'updateScriptTag'],
+    update: ['id', 'updateScriptTag']
   },
   shippingZone: {
-    list: ['_params'],
+    list: ['_params']
   },
   shop: {
-    get: ['_params'],
+    get: ['_params']
   },
   smartCollection: {
     count: ['_params'],
@@ -403,38 +403,38 @@ const shopifyResourceTypes = {
     list: ['_params'],
     order: ['id', 'params'],
     products: ['id', 'params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   storefrontAccessToken: {
     create: ['params'],
     delete: ['id'],
-    list: [],
+    list: []
   },
   tenderTransaction: {
-    list: ['_params'],
+    list: ['_params']
   },
   theme: {
     create: ['params'],
     delete: ['id'],
     get: ['id', 'params'],
     list: ['_params'],
-    update: ['id', 'params'],
+    update: ['id', 'params']
   },
   transaction: {
     count: ['orderId'],
     create: ['orderId', 'params'],
     get: ['orderId', 'id', '_params'],
-    list: ['orderId', '_params'],
+    list: ['orderId', '_params']
   },
   usageCharge: {
     create: ['recurringApplicationChargeId', 'createUsageCharge'],
     get: ['recurringApplicationChargeId', 'id', '_params'],
-    list: ['recurringApplicationChargeId', '_params'],
+    list: ['recurringApplicationChargeId', '_params']
   },
   user: {
     current: [],
     get: ['id'],
-    list: [],
+    list: []
   },
   webhook: {
     count: ['_params'],
@@ -442,8 +442,8 @@ const shopifyResourceTypes = {
     delete: ['id'],
     get: ['id', '_params'],
     list: ['_params'],
-    update: ['id', 'updateWebhook'],
-  },
+    update: ['id', 'updateWebhook']
+  }
 };
 
 export default shopifyResourceTypes;

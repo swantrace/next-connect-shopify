@@ -1,11 +1,13 @@
-import installAppIfNotCreator from './installAppIfNotCreator';
 import {
-  createSetSessionMiddleware,
-  createGetAuthUrlMiddleware,
+  createEnableCookiesMiddleware,
   createGetAccessTokenMiddleware,
+  createGetAuthUrlMiddleware,
+  createHandleInlineAuthMiddleware,
   createHandleShopifyAPIMiddleware,
+  createLoginAgainIfDifferentShopMiddleware,
+  createSetSessionMiddleware,
   createVerifyAPIRoutesMiddleware,
-  createRedirectMiddleware,
+  createVerifyTokenMiddleware
 } from './middlewareCreators';
 
 const functions = {};
@@ -13,31 +15,28 @@ const createNextShopifyFunctions = ({
   prepareSessionOptions,
   sharedSecret,
   apiKey,
-  appSlug,
   scopes,
   accessTokenTimeout = 60000,
   accessMode = '',
-  paramsName = 'params',
-  paramsIValue = 'i',
-  paramsRValue = 'r',
+  paramsName = 'fns',
   apiVersion = '2020-10',
   autoLimit = false,
   presentmentPrices = false,
   shopifyAPITimeout = 60000,
+  // eslint-disable-next-line no-unused-vars
+  whatToDoAfterAuth = (req, res, shopify) => {
+    res.redirect('/');
+  }
 }) => {
   if (Object.keys(functions).length > 0) {
     return functions;
   }
-  functions.installAppIfNot = installAppIfNotCreator({
-    prepareSessionOptions,
-    paramsIValue,
-    apiVersion,
-    autoLimit,
-    presentmentPrices,
-    shopifyAPITimeout,
-  });
   functions.setSessionMiddleware = createSetSessionMiddleware({
-    prepareSessionOptions,
+    prepareSessionOptions
+  });
+  functions.enableCookiesMiddleware = createEnableCookiesMiddleware({
+    apiKey,
+    paramsName
   });
   functions.getAuthUrlMiddleware = createGetAuthUrlMiddleware({
     sharedSecret,
@@ -45,9 +44,15 @@ const createNextShopifyFunctions = ({
     scopes,
     accessTokenTimeout,
     accessMode,
-    paramsName,
-    paramsRValue,
-    paramsIValue,
+    paramsName
+  });
+  functions.handleInlineAuthMiddleware = createHandleInlineAuthMiddleware({
+    sharedSecret,
+    apiKey,
+    scopes,
+    accessTokenTimeout,
+    accessMode,
+    paramsName
   });
   functions.getAccessTokenMiddleware = createGetAccessTokenMiddleware({
     sharedSecret,
@@ -56,23 +61,24 @@ const createNextShopifyFunctions = ({
     accessTokenTimeout,
     accessMode,
     paramsName,
-    paramsRValue,
-    appSlug,
-  });
-  functions.handleShopifyAPIMiddleware = createHandleShopifyAPIMiddleware({
-    paramsName,
-    paramsIValue,
     apiVersion,
     autoLimit,
     presentmentPrices,
     shopifyAPITimeout,
+    whatToDoAfterAuth
+  });
+  functions.loginAgainIfDirrentShopMiddleware = createLoginAgainIfDifferentShopMiddleware();
+  functions.verifyTokenMiddleware = createVerifyTokenMiddleware({ paramsName });
+  functions.handleShopifyAPIMiddleware = createHandleShopifyAPIMiddleware({
+    paramsName,
+    apiVersion,
+    autoLimit,
+    presentmentPrices,
+    shopifyAPITimeout
   });
   functions.verifyAPIRoutesMiddleware = createVerifyAPIRoutesMiddleware({
-    paramsName,
-    paramsIValue,
-    paramsRValue,
+    paramsName
   });
-  functions.redirectMiddleware = createRedirectMiddleware();
   return functions;
 };
 
