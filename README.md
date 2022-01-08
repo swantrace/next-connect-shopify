@@ -1,6 +1,9 @@
 # next-connect-shopify
 Provide a function which could do Shopify app OAuth within Next.js API Routes
 
+in pages/api/[...fns].js
+
+`
 import nc from 'next-connect';
 import createNextShopifyFunctions from 'next-connect-shopify';
 
@@ -42,3 +45,4 @@ handler
   .use(verifyAPIRoutesMiddleware);
 
 export default handler;
+`
