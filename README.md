@@ -6,8 +6,40 @@ in pages/api/[...fns].js
 ```javascript
 import nc from 'next-connect';
 import createNextShopifyFunctions from 'next-connect-shopify';
+import connectMongo from 'connect-mongo';
+import { expressSession } from 'next-session';
+import mongoose from 'mongoose';
 
-import prepareSessionOptions from '../../utils/prepareSessionOptions';
+const connection = {};
+
+async function connectMongoose() {
+  if (connection.isConnected && connection.mongooseConnection) {
+    return connection;
+  }
+
+  const db = await mongoose.connect(process.env.SHOPIFY_APP_MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  });
+  
+  connection.isConnected = db.connections[0].readyState;
+  connection.mongooseConnection = mongoose.connection;
+  return connection;
+}
+
+const prepareSessionOptions = async () => {
+  const { mongooseConnection } = await connectMongoose();
+  const MongoStore = connectMongo(expressSession);
+  return {
+    cookie: {
+      maxAge: parseInt(process.env.SHOPIFY_APP_SESSION_COOKIE_MAXAGE, 10),
+      secure: true,
+      sameSite: 'None'
+    },
+    store: new MongoStore({ mongooseConnection })
+  };
+};
 
 const {
   SHOPIFY_APP_CLIENT_SECRET: sharedSecret,
